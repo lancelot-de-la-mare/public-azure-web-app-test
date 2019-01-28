@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -19,15 +19,15 @@ namespace DesperateV2
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string name = req.Query["name"];
+            string name = req.Query["nomo"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
 
             return name != null
-                ? (ActionResult)new OkObjectResult($"Hello Function 2, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+                ? (ActionResult)new OkObjectResult($"Saluton, {name}.")
+                : new BadRequestObjectResult("Bonvolu uzi nomon en la serĉa ĉeno aŭ en la peta.");
         }
     }
 }
