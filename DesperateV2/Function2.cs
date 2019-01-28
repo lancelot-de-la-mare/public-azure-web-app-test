@@ -23,11 +23,11 @@ namespace DesperateV2
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            name = name ?? data?.nomo;
 
             return name != null
                 ? (ActionResult)new OkObjectResult($"Saluton, {name}.")
-                : new BadRequestObjectResult("Bonvolu uzi nomon en la serĉa ĉeno aŭ en la peta.");
+                : new BadRequestObjectResult("Bonvolu uzi nomon (nomo) en la serĉa ĉeno aŭ en la peta.");
         }
     }
 }
